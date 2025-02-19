@@ -1,5 +1,8 @@
 "use client"
 
+import type React from "react"
+
+import { usePathname } from "next/navigation"
 import {
   BarChart2,
   Receipt,
@@ -22,6 +25,7 @@ import { useState } from "react"
 import Image from "next/image"
 
 export default function Sidebar() {
+  const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   function handleNavigation() {
@@ -37,11 +41,17 @@ export default function Sidebar() {
     icon: any
     children: React.ReactNode
   }) {
+    const isActive = pathname === href
+
     return (
       <Link
         href={href}
         onClick={handleNavigation}
-        className="flex items-center px-3 py-2 text-sm rounded-md transition-colors text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-[#1F1F23]"
+        className={`flex items-center px-3 py-2 text-sm rounded-md transition-colors ${
+          isActive
+            ? "bg-gray-100 dark:bg-[#1F1F23] text-gray-900 dark:text-white"
+            : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-[#1F1F23]"
+        }`}
       >
         <Icon className="h-4 w-4 mr-3 flex-shrink-0" />
         {children}
@@ -100,16 +110,16 @@ export default function Sidebar() {
                   Overview
                 </div>
                 <div className="space-y-1">
-                  <NavItem href="#" icon={Home}>
+                  <NavItem href="/dashboard" icon={Home}>
                     Dashboard
                   </NavItem>
-                  <NavItem href="#" icon={BarChart2}>
+                  <NavItem href="/analytics" icon={BarChart2}>
                     Analytics
                   </NavItem>
-                  <NavItem href="#" icon={Building2}>
+                  <NavItem href="/organization" icon={Building2}>
                     Organization
                   </NavItem>
-                  <NavItem href="#" icon={Folder}>
+                  <NavItem href="/projects" icon={Folder}>
                     Projects
                   </NavItem>
                 </div>
@@ -120,13 +130,13 @@ export default function Sidebar() {
                   Finance
                 </div>
                 <div className="space-y-1">
-                  <NavItem href="#" icon={Wallet}>
+                  <NavItem href="/transactions" icon={Wallet}>
                     Transactions
                   </NavItem>
-                  <NavItem href="#" icon={Receipt}>
+                  <NavItem href="/invoices" icon={Receipt}>
                     Invoices
                   </NavItem>
-                  <NavItem href="#" icon={CreditCard}>
+                  <NavItem href="/payments" icon={CreditCard}>
                     Payments
                   </NavItem>
                 </div>
@@ -137,16 +147,16 @@ export default function Sidebar() {
                   Team
                 </div>
                 <div className="space-y-1">
-                  <NavItem href="#" icon={Users2}>
+                  <NavItem href="/members" icon={Users2}>
                     Members
                   </NavItem>
-                  <NavItem href="#" icon={Shield}>
+                  <NavItem href="/permissions" icon={Shield}>
                     Permissions
                   </NavItem>
-                  <NavItem href="#" icon={MessagesSquare}>
+                  <NavItem href="/chat" icon={MessagesSquare}>
                     Chat
                   </NavItem>
-                  <NavItem href="#" icon={Video}>
+                  <NavItem href="/meetings" icon={Video}>
                     Meetings
                   </NavItem>
                 </div>
