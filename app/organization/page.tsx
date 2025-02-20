@@ -1,4 +1,4 @@
-import Layout from "@/components/kokonutui/layout"
+import Layout from "@/components/dashboard-starter/layout"
 import { Users, Briefcase, MapPin } from "lucide-react"
 
 export default function OrganizationPage() {
