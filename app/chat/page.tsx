@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import Layout from "@/components/kokonutui/layout";
+import Layout from "../../components/kokonutui/layout";
 import { useState } from "react";
 import { Send } from "lucide-react";
 

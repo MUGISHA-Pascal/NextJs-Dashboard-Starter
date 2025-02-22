@@ -1,7 +1,9 @@
-import Layout from "@/components/dashboard-starter/layout"
-import dynamic from "next/dynamic"
+import Layout from "../../components/Dashboard-starter/layout";
+import dynamic from "next/dynamic";
 
-const AnalyticsChart = dynamic(() => import("@/components/AnalyticsChart"), { ssr: false })
+const AnalyticsChart = dynamic(() => import("@/components/AnalyticsChart"), {
+  ssr: false,
+});
 
 export default function AnalyticsPage() {
   return (
@@ -14,6 +16,5 @@ export default function AnalyticsPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-

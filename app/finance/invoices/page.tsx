@@ -1,13 +1,43 @@
-import Layout from "@/components/dashboard-starter/layout"
-import { CheckCircle, Clock, AlertTriangle } from "lucide-react"
+import Layout from "../../../components/Dashboard-starter/layout";
+import { CheckCircle, Clock, AlertTriangle } from "lucide-react";
 
 const invoices = [
-  { id: 1, client: "Acme Corp", amount: 5000, status: "Paid", dueDate: "2023-06-30" },
-  { id: 2, client: "Globex Inc", amount: 7500, status: "Pending", dueDate: "2023-07-15" },
-  { id: 3, client: "Initech", amount: 3000, status: "Overdue", dueDate: "2023-06-15" },
-  { id: 4, client: "Umbrella Corp", amount: 10000, status: "Paid", dueDate: "2023-07-31" },
-  { id: 5, client: "Hooli", amount: 8500, status: "Pending", dueDate: "2023-08-15" },
-]
+  {
+    id: 1,
+    client: "Acme Corp",
+    amount: 5000,
+    status: "Paid",
+    dueDate: "2023-06-30",
+  },
+  {
+    id: 2,
+    client: "Globex Inc",
+    amount: 7500,
+    status: "Pending",
+    dueDate: "2023-07-15",
+  },
+  {
+    id: 3,
+    client: "Initech",
+    amount: 3000,
+    status: "Overdue",
+    dueDate: "2023-06-15",
+  },
+  {
+    id: 4,
+    client: "Umbrella Corp",
+    amount: 10000,
+    status: "Paid",
+    dueDate: "2023-07-31",
+  },
+  {
+    id: 5,
+    client: "Hooli",
+    amount: 8500,
+    status: "Pending",
+    dueDate: "2023-08-15",
+  },
+];
 
 export default function InvoicesPage() {
   return (
@@ -47,13 +77,19 @@ export default function InvoicesPage() {
                         invoice.status === "Paid"
                           ? "bg-green-100 text-green-800"
                           : invoice.status === "Pending"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : "bg-red-100 text-red-800"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
                       }`}
                     >
-                      {invoice.status === "Paid" && <CheckCircle className="mr-1 h-4 w-4" />}
-                      {invoice.status === "Pending" && <Clock className="mr-1 h-4 w-4" />}
-                      {invoice.status === "Overdue" && <AlertTriangle className="mr-1 h-4 w-4" />}
+                      {invoice.status === "Paid" && (
+                        <CheckCircle className="mr-1 h-4 w-4" />
+                      )}
+                      {invoice.status === "Pending" && (
+                        <Clock className="mr-1 h-4 w-4" />
+                      )}
+                      {invoice.status === "Overdue" && (
+                        <AlertTriangle className="mr-1 h-4 w-4" />
+                      )}
                       {invoice.status}
                     </span>
                   </td>
@@ -67,6 +103,5 @@ export default function InvoicesPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-
