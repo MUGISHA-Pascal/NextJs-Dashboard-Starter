@@ -1,13 +1,43 @@
-import Layout from "@/components/dashboard-starter/layout"
-import { CreditCard, DollarSign, BanknoteIcon as Bank } from "lucide-react"
+import Layout from "../../../components/Dashboard-starter/layout";
+import { CreditCard, DollarSign, BanknoteIcon as Bank } from "lucide-react";
 
 const payments = [
-  { id: 1, method: "Credit Card", amount: 500, date: "2023-06-15", last4: "1234" },
-  { id: 2, method: "PayPal", amount: 750, date: "2023-06-14", email: "user@example.com" },
-  { id: 3, method: "Bank Transfer", amount: 1000, date: "2023-06-13", accountNumber: "*****6789" },
-  { id: 4, method: "Credit Card", amount: 250, date: "2023-06-12", last4: "5678" },
-  { id: 5, method: "Bank Transfer", amount: 1500, date: "2023-06-11", accountNumber: "*****4321" },
-]
+  {
+    id: 1,
+    method: "Credit Card",
+    amount: 500,
+    date: "2023-06-15",
+    last4: "1234",
+  },
+  {
+    id: 2,
+    method: "PayPal",
+    amount: 750,
+    date: "2023-06-14",
+    email: "user@example.com",
+  },
+  {
+    id: 3,
+    method: "Bank Transfer",
+    amount: 1000,
+    date: "2023-06-13",
+    accountNumber: "*****6789",
+  },
+  {
+    id: 4,
+    method: "Credit Card",
+    amount: 250,
+    date: "2023-06-12",
+    last4: "5678",
+  },
+  {
+    id: 5,
+    method: "Bank Transfer",
+    amount: 1500,
+    date: "2023-06-11",
+    accountNumber: "*****4321",
+  },
+];
 
 export default function PaymentsPage() {
   return (
@@ -37,9 +67,15 @@ export default function PaymentsPage() {
                 <tr key={payment.id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                     <span className="inline-flex items-center">
-                      {payment.method === "Credit Card" && <CreditCard className="mr-2 h-4 w-4" />}
-                      {payment.method === "PayPal" && <DollarSign className="mr-2 h-4 w-4" />}
-                      {payment.method === "Bank Transfer" && <Bank className="mr-2 h-4 w-4" />}
+                      {payment.method === "Credit Card" && (
+                        <CreditCard className="mr-2 h-4 w-4" />
+                      )}
+                      {payment.method === "PayPal" && (
+                        <DollarSign className="mr-2 h-4 w-4" />
+                      )}
+                      {payment.method === "Bank Transfer" && (
+                        <Bank className="mr-2 h-4 w-4" />
+                      )}
                       {payment.method}
                     </span>
                   </td>
@@ -52,7 +88,8 @@ export default function PaymentsPage() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     {payment.last4 && `Card ending in ${payment.last4}`}
                     {payment.email && payment.email}
-                    {payment.accountNumber && `Account ${payment.accountNumber}`}
+                    {payment.accountNumber &&
+                      `Account ${payment.accountNumber}`}
                   </td>
                 </tr>
               ))}
@@ -61,6 +98,5 @@ export default function PaymentsPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-

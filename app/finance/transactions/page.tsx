@@ -1,13 +1,43 @@
-import Layout from "@/components/dashboard-starter/layout"
-import { ArrowUpRight, ArrowDownLeft } from "lucide-react"
+import Layout from "../../../components/Dashboard-starter/layout";
+import { ArrowUpRight, ArrowDownLeft } from "lucide-react";
 
 const transactions = [
-  { id: 1, description: "Payment from Client A", amount: 5000, type: "income", date: "2023-06-15" },
-  { id: 2, description: "Office Supplies", amount: 250, type: "expense", date: "2023-06-14" },
-  { id: 3, description: "Subscription Revenue", amount: 1000, type: "income", date: "2023-06-13" },
-  { id: 4, description: "Employee Salary", amount: 3000, type: "expense", date: "2023-06-12" },
-  { id: 5, description: "Software License", amount: 500, type: "expense", date: "2023-06-11" },
-]
+  {
+    id: 1,
+    description: "Payment from Client A",
+    amount: 5000,
+    type: "income",
+    date: "2023-06-15",
+  },
+  {
+    id: 2,
+    description: "Office Supplies",
+    amount: 250,
+    type: "expense",
+    date: "2023-06-14",
+  },
+  {
+    id: 3,
+    description: "Subscription Revenue",
+    amount: 1000,
+    type: "income",
+    date: "2023-06-13",
+  },
+  {
+    id: 4,
+    description: "Employee Salary",
+    amount: 3000,
+    type: "expense",
+    date: "2023-06-12",
+  },
+  {
+    id: 5,
+    description: "Software License",
+    amount: 500,
+    type: "expense",
+    date: "2023-06-11",
+  },
+];
 
 export default function TransactionsPage() {
   return (
@@ -44,7 +74,9 @@ export default function TransactionsPage() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        transaction.type === "income" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                        transaction.type === "income"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-red-100 text-red-800"
                       }`}
                     >
                       {transaction.type === "income" ? (
@@ -65,6 +97,5 @@ export default function TransactionsPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-

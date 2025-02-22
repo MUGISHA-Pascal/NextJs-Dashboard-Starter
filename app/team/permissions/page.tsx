@@ -1,6 +1,6 @@
 "use client";
 
-import Layout from "../../../components/dashboard-starter/layout";
+import Layout from "../../../components/Dashboard-starter/layout";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 
