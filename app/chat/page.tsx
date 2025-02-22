@@ -1,13 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import Layout from "@/components/kokonutui/layout"
-import { useState } from "react"
-import { Send } from "lucide-react"
+import Layout from "@/components/kokonutui/layout";
+import { useState } from "react";
+import { Send } from "lucide-react";
 
 const initialMessages = [
-  { id: 1, sender: "John Doe", content: "Hey team, how's the project coming along?", timestamp: "10:30 AM" },
+  {
+    id: 1,
+    sender: "John Doe",
+    content: "Hey team, how's the project coming along?",
+    timestamp: "10:30 AM",
+  },
   {
     id: 2,
     sender: "Jane Smith",
@@ -20,25 +25,28 @@ const initialMessages = [
     content: "Great to hear! I've just finished the API endpoints.",
     timestamp: "10:35 AM",
   },
-]
+];
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState(initialMessages)
-  const [newMessage, setNewMessage] = useState("")
+  const [messages, setMessages] = useState(initialMessages);
+  const [newMessage, setNewMessage] = useState("");
 
   const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (newMessage.trim()) {
       const message = {
         id: messages.length + 1,
         sender: "You",
         content: newMessage.trim(),
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-      }
-      setMessages([...messages, message])
-      setNewMessage("")
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+      setMessages([...messages, message]);
+      setNewMessage("");
     }
-  }
+  };
 
   return (
     <Layout>
@@ -47,18 +55,32 @@ export default function ChatPage() {
         <div className="flex-1 bg-white dark:bg-[#1F1F23] rounded-lg shadow overflow-hidden flex flex-col">
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message) => (
-              <div key={message.id} className={`flex ${message.sender === "You" ? "justify-end" : "justify-start"}`}>
+              <div
+                key={message.id}
+                className={`flex ${
+                  message.sender === "You" ? "justify-end" : "justify-start"
+                }`}
+              >
                 <div
-                  className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${message.sender === "You" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white"}`}
+                  className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                    message.sender === "You"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white"
+                  }`}
                 >
                   <p className="font-medium text-sm">{message.sender}</p>
                   <p>{message.content}</p>
-                  <p className="text-xs text-right mt-1 opacity-70">{message.timestamp}</p>
+                  <p className="text-xs text-right mt-1 opacity-70">
+                    {message.timestamp}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-          <form onSubmit={handleSendMessage} className="p-4 bg-gray-100 dark:bg-gray-800">
+          <form
+            onSubmit={handleSendMessage}
+            className="p-4 bg-gray-100 dark:bg-gray-800"
+          >
             <div className="flex space-x-2">
               <input
                 type="text"
@@ -78,6 +100,5 @@ export default function ChatPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-
