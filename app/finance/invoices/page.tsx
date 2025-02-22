@@ -1,4 +1,4 @@
-import Layout from "../../../components/dashboard-starter/layout"
+import Layout from "@/components/dashboard-starter/layout"
 import { CheckCircle, Clock, AlertTriangle } from "lucide-react"
 
 const invoices = [

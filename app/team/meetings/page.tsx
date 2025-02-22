@@ -1,4 +1,4 @@
-import Layout from "../../../components/dashboard-starter/layout"
+import Layout from "@/components/dashboard-starter/layout"
 import { Calendar, Clock, Users, VideoIcon } from "lucide-react"
 
 const meetings = [
