@@ -1,6 +1,6 @@
-import Layout from "@/components/dashboard-starter/layout"
-import { Mail, Phone, MapPin } from "lucide-react"
-import Image from "next/image"
+import Layout from "../../../components/Dashboard-starter/layout";
+import { Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const members = [
   {
@@ -48,7 +48,7 @@ const members = [
     location: "Toronto, Canada",
     avatar: "/placeholder.svg?height=40&width=40",
   },
-]
+];
 
 export default function MembersPage() {
   return (
@@ -68,8 +68,12 @@ export default function MembersPage() {
                     className="rounded-full"
                   />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{member.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{member.role}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                      {member.name}
+                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
+                      {member.role}
+                    </p>
                   </div>
                   <div className="flex items-center space-x-4">
                     <a
@@ -96,6 +100,5 @@ export default function MembersPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-

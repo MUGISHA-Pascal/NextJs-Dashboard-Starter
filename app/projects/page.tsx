@@ -1,13 +1,28 @@
-import Layout from "@/components/dashboard-starter/layout"
-import { CheckCircle, Clock, AlertTriangle } from "lucide-react"
+import Layout from "../../components/Dashboard-starter/layout";
+import { CheckCircle, Clock, AlertTriangle } from "lucide-react";
 
 const projects = [
-  { id: 1, name: "Website Redesign", status: "Completed", dueDate: "2023-06-30" },
-  { id: 2, name: "Mobile App Development", status: "In Progress", dueDate: "2023-08-15" },
+  {
+    id: 1,
+    name: "Website Redesign",
+    status: "Completed",
+    dueDate: "2023-06-30",
+  },
+  {
+    id: 2,
+    name: "Mobile App Development",
+    status: "In Progress",
+    dueDate: "2023-08-15",
+  },
   { id: 3, name: "Data Migration", status: "Pending", dueDate: "2023-07-31" },
-  { id: 4, name: "Cloud Infrastructure Setup", status: "In Progress", dueDate: "2023-09-30" },
+  {
+    id: 4,
+    name: "Cloud Infrastructure Setup",
+    status: "In Progress",
+    dueDate: "2023-09-30",
+  },
   { id: 5, name: "AI Integration", status: "Pending", dueDate: "2023-10-31" },
-]
+];
 
 export default function ProjectsPage() {
   return (
@@ -41,13 +56,19 @@ export default function ProjectsPage() {
                         project.status === "Completed"
                           ? "bg-green-100 text-green-800"
                           : project.status === "In Progress"
-                            ? "bg-blue-100 text-blue-800"
-                            : "bg-yellow-100 text-yellow-800"
+                          ? "bg-blue-100 text-blue-800"
+                          : "bg-yellow-100 text-yellow-800"
                       }`}
                     >
-                      {project.status === "Completed" && <CheckCircle className="mr-1 h-4 w-4" />}
-                      {project.status === "In Progress" && <Clock className="mr-1 h-4 w-4" />}
-                      {project.status === "Pending" && <AlertTriangle className="mr-1 h-4 w-4" />}
+                      {project.status === "Completed" && (
+                        <CheckCircle className="mr-1 h-4 w-4" />
+                      )}
+                      {project.status === "In Progress" && (
+                        <Clock className="mr-1 h-4 w-4" />
+                      )}
+                      {project.status === "Pending" && (
+                        <AlertTriangle className="mr-1 h-4 w-4" />
+                      )}
                       {project.status}
                     </span>
                   </td>
@@ -61,6 +82,5 @@ export default function ProjectsPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-
