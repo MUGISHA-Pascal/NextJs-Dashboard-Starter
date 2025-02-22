@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import type React from "react";
-import { usePathname } from "next/navigation";
+import type React from "react"
+import { usePathname } from "next/navigation"
 import {
   BarChart2,
   Receipt,
@@ -18,16 +18,16 @@ import {
   Menu,
   Home,
   LayoutDashboard,
-} from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+} from "lucide-react"
+import Link from "next/link"
+import { useState } from "react"
 
 export default function Sidebar() {
-  const pathname = usePathname();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   function handleNavigation() {
-    setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false)
   }
 
   function NavItem({
@@ -35,11 +35,11 @@ export default function Sidebar() {
     icon: Icon,
     children,
   }: {
-    href: string;
-    icon: any;
-    children: React.ReactNode;
+    href: string
+    icon: any
+    children: React.ReactNode
   }) {
-    const isActive = pathname === href;
+    const isActive = pathname === href
 
     return (
       <Link
@@ -54,7 +54,7 @@ export default function Sidebar() {
         <Icon className="h-4 w-4 mr-3 flex-shrink-0" />
         {children}
       </Link>
-    );
+    )
   }
 
   return (
@@ -79,7 +79,7 @@ export default function Sidebar() {
             className="h-16 px-6 flex items-center border-b border-gray-200 dark:border-[#1F1F23]"
           >
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-700">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
                 <LayoutDashboard className="w-5 h-5 text-white" />
               </div>
               <span className="text-lg font-semibold hover:cursor-pointer text-gray-900 dark:text-white">
@@ -169,5 +169,6 @@ export default function Sidebar() {
         />
       )}
     </>
-  );
+  )
 }
+

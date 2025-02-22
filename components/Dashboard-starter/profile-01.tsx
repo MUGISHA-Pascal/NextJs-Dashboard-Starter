@@ -59,7 +59,7 @@ export default function Profile01({
           <div className="flex items-center gap-4 mb-8">
             <div className="relative shrink-0">
               <Image
-                src={avatar}
+                src={avatar || "/placeholder.svg"}
                 alt={name}
                 width={72}
                 height={72}
