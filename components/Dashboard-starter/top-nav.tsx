@@ -1,16 +1,21 @@
-"use client"
+"use client";
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import Image from "next/image"
-import { Bell, ChevronRight } from "lucide-react"
-import Profile01 from "./profile-01"
-import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { usePathname } from "next/navigation"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
+import { Bell, ChevronRight } from "lucide-react";
+import Profile01 from "./profile-01";
+import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { usePathname } from "next/navigation";
+import { useMemo } from "react";
 
 interface BreadcrumbItem {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 const breadcrumbMap: { [key: string]: BreadcrumbItem[] } = {
@@ -98,20 +103,37 @@ const breadcrumbMap: { [key: string]: BreadcrumbItem[] } = {
     { label: "Team", href: "/team" },
     { label: "Meetings", href: "/team/meetings" },
   ],
-}
+};
 
 export default function TopNav() {
-  const pathname = usePathname()
-  const breadcrumbs = breadcrumbMap[pathname] || [{ label: "Dashboard-starter", href: "/dashboard" }]
+  const pathname = usePathname();
+
+  // Wrap the breadcrumb calculation in a try-catch block
+  const breadcrumbs = useMemo(() => {
+    try {
+      return (
+        breadcrumbMap[pathname] || [
+          { label: "Dashboard-starter", href: "/dashboard" },
+        ]
+      );
+    } catch (error) {
+      console.error("Error in breadcrumb calculation:", error);
+      return [{ label: "Dashboard-starter", href: "/dashboard" }];
+    }
+  }, [pathname]);
 
   return (
     <nav className="px-3 sm:px-6 flex items-center justify-between bg-white dark:bg-[#0F0F12] border-b border-gray-200 dark:border-[#1F1F23] h-full">
       <div className="font-medium text-sm hidden sm:flex items-center space-x-1 truncate max-w-[300px]">
         {breadcrumbs.map((item, index) => (
           <div key={item.label} className="flex items-center">
-            {index > 0 && <ChevronRight className="h-4 w-4 text-gray-500 dark:text-gray-400 mx-1" />}
+            {index > 0 && (
+              <ChevronRight className="h-4 w-4 text-gray-500 dark:text-gray-400 mx-1" />
+            )}
             {index === breadcrumbs.length - 1 ? (
-              <span className="text-gray-900 dark:text-gray-100">{item.label}</span>
+              <span className="text-gray-900 dark:text-gray-100">
+                {item.label}
+              </span>
             ) : (
               <Link
                 href={item.href}
@@ -154,6 +176,5 @@ export default function TopNav() {
         </DropdownMenu>
       </div>
     </nav>
-  )
+  );
 }
-
