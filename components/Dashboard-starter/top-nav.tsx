@@ -11,7 +11,6 @@ import Profile01 from "./profile-01";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
 
 interface BreadcrumbItem {
   label: string;
@@ -108,22 +107,19 @@ const breadcrumbMap: { [key: string]: BreadcrumbItem[] } = {
 export default function TopNav() {
   const pathname = usePathname();
 
-  // Wrap the breadcrumb calculation in a try-catch block
-  const breadcrumbs = useMemo(() => {
-    try {
-      if (!pathname) {
-        return [{ label: "Dashboard-starter", href: "/dashboard" }];
-      }
-      return (
-        breadcrumbMap[pathname] || [
-          { label: "Dashboard-starter", href: "/dashboard" },
-        ]
-      );
-    } catch (error) {
-      console.error("Error in breadcrumb calculation:", error);
+  // Calculate breadcrumbs without useMemo
+  const getBreadcrumbs = () => {
+    if (!pathname) {
       return [{ label: "Dashboard-starter", href: "/dashboard" }];
     }
-  }, [pathname]);
+    return (
+      breadcrumbMap[pathname] || [
+        { label: "Dashboard-starter", href: "/dashboard" },
+      ]
+    );
+  };
+
+  const breadcrumbs = getBreadcrumbs();
 
   return (
     <nav className="px-3 sm:px-6 flex items-center justify-between bg-white dark:bg-[#0F0F12] border-b border-gray-200 dark:border-[#1F1F23] h-full">
