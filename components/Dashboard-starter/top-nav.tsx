@@ -111,6 +111,9 @@ export default function TopNav() {
   // Wrap the breadcrumb calculation in a try-catch block
   const breadcrumbs = useMemo(() => {
     try {
+      if (!pathname) {
+        return [{ label: "Dashboard-starter", href: "/dashboard" }];
+      }
       return (
         breadcrumbMap[pathname] || [
           { label: "Dashboard-starter", href: "/dashboard" },
